@@ -1,0 +1,22 @@
+<%= form_with(model: post) do |form| %>
+  <% if post.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+        <% post.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.text_area :content %>
+  </div>
+
+  <div>
+    <%= form.hidden_field :user_id, {:value => (@user.id || post.user.id)} %>
+    <%= form.submit  'Submit' %>
+  </div>
+<% end %>

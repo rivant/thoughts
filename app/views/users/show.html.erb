@@ -1,0 +1,22 @@
+<p style="color: green"><%= notice %></p>
+
+<p>
+  <span>Name: </span>
+  <%= link_to @user.name.capitalize, edit_user_path(@user) %>
+</p>
+
+<div>
+  <%= link_to "Post Thought", new_post_path(user: @user) %> |
+  <%= link_to "Back to users", users_path %>
+</div>
+
+<h3>Select a thought:</h3>
+<% @user.posts.each do |post| %>
+  <div class="container">
+    <div class="column">
+      <span>"<%= link_to(post.content, post_path(post)) %>"</span>
+      &nbsp;
+      <span>(<%= post.created_at.to_date %>)</span>
+    </div>
+  </div>
+<% end %>

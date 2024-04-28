@@ -1,0 +1,7 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @vote %>
+
+<div>
+  <%= button_to "Undo this vote", @vote, method: :delete %>
+</div>

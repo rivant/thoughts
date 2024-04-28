@@ -1,0 +1,19 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Contributors</h1>
+
+<div id="users">
+  <% @users.each do |user| %>
+    <div>
+      <%= link_to user.name.capitalize, user %>
+    </div>
+  <% end %>
+</div>
+<br>
+<br>
+<div>
+  <%= link_to "Sign Up", new_user_path %>
+</div>
+<div>
+  <%= link_to "View Posts", posts_path %>
+</div>

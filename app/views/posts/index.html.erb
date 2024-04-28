@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="column-no-border">
+    <h2 id="posts">Today's Thoughts (<%= Time.zone.today %>)</h2>
+  </div>
+  <div class="column-no-border">
+    <span style="color: green"><%= notice %></span>
+  </div>
+</div>
+
+<% @posts.each do |post| %>
+  <%= form_with(model: @vote) do |form| %>
+    <div class="container">
+      <div class="column">
+        <p>"<%= post.content %>"</p>
+        <p>By: <%= post.user.name.capitalize %></p>
+        <%= form.hidden_field :post_id, {value: post.id} %>
+      </div>
+      <div class="column-no-border">
+        <p><%= form.submit 'Vote' %></p>
+        <p>Current Votes: <%= post&.vote&.amount || 0 %></p>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+
+<br>
+<%= link_to "Back to users", users_path %>
